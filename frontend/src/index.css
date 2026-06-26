@@ -1,0 +1,256 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --font-heading: 'Inter', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --background: #ffffff;
+  --surface: #f8f8f6;
+  --surface-strong: #ededeb;
+  --surface-panel: #ffffff;
+  --border: rgba(17, 17, 17, 0.08);
+  --text-primary: #111111;
+  --text-secondary: rgba(17, 17, 17, 0.72);
+  --text-muted: rgba(17, 17, 17, 0.55);
+  --accent: #111111;
+  --accent-soft: rgba(17, 17, 17, 0.08);
+  --accent-strong: rgba(17, 17, 17, 0.95);
+  --shadow: rgba(15, 15, 15, 0.08);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--background);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(17, 17, 17, 0.04) 0%, transparent 28%),
+    radial-gradient(circle at 80% 75%, rgba(17, 17, 17, 0.02) 0%, transparent 30%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+#root {
+  position: relative;
+  z-index: 1;
+}
+
+/* Glassmorphism Card */
+.glass-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+}
+
+/* Accent Text */
+.gold-text,
+.accent-text {
+  color: var(--text-primary);
+}
+
+/* Buttons */
+.btn-gold {
+  background: var(--accent);
+  color: #ffffff;
+  border: 1px solid transparent;
+  border-radius: 50px;
+  padding: 14px 36px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-gold::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.16), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn-gold:hover::before {
+  left: 100%;
+}
+
+.btn-gold:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(17, 17, 17, 0.12);
+}
+
+.btn-gold:active {
+  transform: translateY(0);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid rgba(17, 17, 17, 0.15);
+  border-radius: 50px;
+  padding: 12px 32px;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-ghost:hover {
+  border-color: rgba(17, 17, 17, 0.25);
+  background: var(--accent-soft);
+}
+
+/* Input Styles */
+.luxury-input {
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 18px;
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 15px;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.luxury-input:focus {
+  border-color: rgba(17, 17, 17, 0.22);
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(17, 17, 17, 0.06);
+}
+
+.luxury-input::placeholder {
+  color: var(--text-muted);
+}
+
+/* Label */
+.luxury-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+/* Ornamental Divider */
+.ornament {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 24px 0;
+}
+
+.ornament::before,
+.ornament::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(17, 17, 17, 0.2), transparent);
+}
+
+.ornament span {
+  color: var(--text-secondary);
+  font-size: 12px;
+  letter-spacing: 4px;
+  opacity: 0.75;
+}
+
+/* Floating Particles */
+.particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: rgba(17, 17, 17, 0.18);
+  border-radius: 50%;
+  opacity: 0;
+  animation: float-up linear infinite;
+}
+
+@keyframes float-up {
+  0% { transform: translateY(100vh) scale(0); opacity: 0; }
+  10% { opacity: 0.5; }
+  90% { opacity: 0.15; }
+  100% { transform: translateY(-20px) scale(1); opacity: 0; }
+}
+
+/* Page Transitions */
+.page-enter {
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--background); }
+::-webkit-scrollbar-thumb { background: rgba(17, 17, 17, 0.12); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(17, 17, 17, 0.18); }
+
+/* Shimmer animation */
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.shimmer {
+  background: linear-gradient(90deg, transparent 0%, rgba(17, 17, 17, 0.08) 50%, transparent 100%);
+  background-size: 200% auto;
+  animation: shimmer 2s linear infinite;
+}
+
+/* Pulse Accent */
+@keyframes pulse-gold {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(17, 17, 17, 0.08); }
+  50% { box-shadow: 0 0 0 12px rgba(17, 17, 17, 0); }
+}
+
+.pulse-gold {
+  animation: pulse-gold 2s infinite;
+  box-shadow: 0 0 0 0 rgba(17, 17, 17, 0.08);
+}
